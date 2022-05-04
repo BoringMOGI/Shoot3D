@@ -5,6 +5,7 @@ using UnityEngine;
 public class Movement3D : MonoBehaviour
 {
     [Header("Value")]
+    [SerializeField] Animator anim;
     [SerializeField] float moveSpeed;       // 이동속도.
     [SerializeField] float jumpHeight;      // 점프 높이.
 
@@ -17,20 +18,29 @@ public class Movement3D : MonoBehaviour
     [SerializeField] LayerMask groundMask;  // 지면 레이어 마스크.
 
     CharacterController controller;         // 캐릭터 컨트롤러 클래스.
-    Animator anim;
     bool isGrounded;                        // 땅에 있는가?
     Vector3 velocity;                       // 현재 나의 속도.
 
     float gravity => -9.81f * gravityScale; // 실제 중력 가속도 * 중력 배수.
 
+    [Range(0.0f, 2.0f)]
+    [SerializeField] float timeScale = 1f;
+
     private void Start()
     {
         controller = GetComponent<CharacterController>();
-        anim = GetComponent<Animator>();
+        
+    }
+
+    private void FixedUpdate()
+    {
+        
     }
 
     void Update()
     {
+        Time.timeScale = timeScale;
+
         isGrounded = Physics.CheckSphere(groundPivot.position, groundRadius, groundMask);
         anim.SetBool("isGrounded", isGrounded);
 
