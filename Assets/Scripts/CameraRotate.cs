@@ -10,6 +10,12 @@ public class CameraRotate : MonoBehaviour
     [SerializeField] Transform playerBody;
     [SerializeField] Transform playerEye;
 
+    [Range(0.0f, 90.0f)]
+    [SerializeField]float limitUp;
+
+    [Range(-90.0f, 0.0f)]
+    [SerializeField] float limitDown;
+
     [Range(1f, 1000f)]
     [SerializeField] float sensitivityX;    // 수평 감도.
 
@@ -44,7 +50,7 @@ public class CameraRotate : MonoBehaviour
 
         // 수평 회전
         // 마우스의 수직 이동량에 따라 rotateX의 값을 변환. (단, 각도에 제한을 둔다.)
-        rotateX = Mathf.Clamp(rotateX - axix.y, -60.0f, 10.0f);
+        rotateX = Mathf.Clamp(rotateX - axix.y, limitUp * -1f, limitDown * -1f);
         playerEye.localRotation = Quaternion.Euler(rotateX, 0f, 0f);
     }
 

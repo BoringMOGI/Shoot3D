@@ -31,19 +31,12 @@ public class Movement3D : MonoBehaviour
         controller = GetComponent<CharacterController>();
         
     }
-
-    private void FixedUpdate()
-    {
-        
-    }
-
     void Update()
     {
         Time.timeScale = timeScale;
 
         isGrounded = Physics.CheckSphere(groundPivot.position, groundRadius, groundMask);
         anim.SetBool("isGrounded", isGrounded);
-
         // 지면에 도달했지만 여전히 속도가 하강하고 있을 때.
         if (isGrounded && velocity.y < 0f)
         {
@@ -70,6 +63,7 @@ public class Movement3D : MonoBehaviour
     {
         float x = Input.GetAxis("Horizontal");   // 오른쪽:1, 안누르면:0, 왼쪽:-1.
         float z = Input.GetAxis("Vertical");     // 위쪽:1, 안누르면:0, 아래쪽:-1.
+        bool isRun = Input.GetKey(KeyCode.LeftShift);
 
         // Vector3.right : 월드 좌표를 기준으로 오른쪽 방향 값.
         // transform.right : 나를 기준으로 오른쪽 방향 값.
@@ -78,8 +72,14 @@ public class Movement3D : MonoBehaviour
         // movement  = 이동량.
         // 벡터의 특징 : 벡터(방향)에 -1을 곱하면 반대 방향이 된다.
         Vector3 direction = (transform.right * x) + (transform.forward * z);
-        controller.Move(direction * moveSpeed * Time.deltaTime);
+        Vector3 movement = direction * moveSpeed * Time.deltaTime;
+        movement *= isRun ? 1.5f : 1.0f;
 
+        controller.Move(movement);
+
+        // 방향이 0이 아닐 경우.
+        anim.SetBool("isWalk", movement != Vector3.zero);
+        anim.SetBool("isRun", isRun);
         anim.SetFloat("horizontal", x);
         anim.SetFloat("vertical", z);
     }
