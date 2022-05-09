@@ -21,7 +21,7 @@ public class AudioManager : ObjectPool<AudioManager, AudioEffect>
     {
         audioSource.Stop();         // BGM을 멈춰라.
     }
-    public void PlaySE(string name)
+    public void PlaySE(string name, float volumn = 1.0f)
     {
         // effects배열 순회.
         for(int i = 0; i< effects.Length; i++)
@@ -31,7 +31,7 @@ public class AudioManager : ObjectPool<AudioManager, AudioEffect>
             {
                 AudioClip clip = effects[i];                    // effects의 i번째 대입.
                 AudioEffect effect = GetPool();                 // 효과음 오브젝트 꺼내기.
-                effect.PlaySE(clip);                            // clip 전달, 재생.
+                effect.PlaySE(clip, volumn);                    // clip 전달, 재생.
                 break;
             }
         }

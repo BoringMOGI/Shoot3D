@@ -13,10 +13,11 @@ public class AudioEffect : MonoBehaviour, IObjectPool<AudioEffect>
 
     ReturnPoolEvent<AudioEffect> onReturn;
 
-    public void PlaySE(AudioClip clip)
+    public void PlaySE(AudioClip clip, float volumn)
     {
         source.clip = clip;         // 매게변수로 받은 clip을 source에 삽입.
         source.loop = false;        // loop옵션 비활성화.
+        source.volume = volumn;     // 볼륨.
         source.Play();              // source를 재생한다.
 
         StartCoroutine(CheckPlay());

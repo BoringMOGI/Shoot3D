@@ -1761,6 +1761,7 @@ MonoBehaviour:
   poolCount: 15
   effects:
   - {fileID: 8300000, guid: 38b450e2adcb6f542acc8c1d423bd8dc, type: 3}
+  - {fileID: 8300000, guid: 5b907074256e36d41b92e89fb0790633, type: 3}
 --- !u!4 &1149821349
 Transform:
   m_ObjectHideFlags: 0
@@ -3150,6 +3151,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1882899556}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1890382869 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100012, guid: 182b7f11db452bc458d35a6c9eced06f, type: 3}
+  m_PrefabInstance: {fileID: 208018881}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1890382870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890382869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a249b4011b45e64eb853d83effca9d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 2067548699}
 --- !u!1 &2003668331
 GameObject:
   m_ObjectHideFlags: 0
