@@ -23,9 +23,6 @@ public class Movement3D : MonoBehaviour
 
     float gravity => -9.81f * gravityScale; // 실제 중력 가속도 * 중력 배수.
 
-    [Range(0.0f, 2.0f)]
-    [SerializeField] float timeScale = 1f;
-
     private void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -33,8 +30,6 @@ public class Movement3D : MonoBehaviour
     }
     void Update()
     {
-        Time.timeScale = timeScale;
-
         isGrounded = Physics.CheckSphere(groundPivot.position, groundRadius, groundMask);
         anim.SetBool("isGrounded", isGrounded);
         // 지면에 도달했지만 여전히 속도가 하강하고 있을 때.

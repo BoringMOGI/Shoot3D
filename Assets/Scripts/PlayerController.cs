@@ -48,8 +48,11 @@ class Weapon
 
 public class PlayerController : Singleton<PlayerController>
 {
-    [SerializeField] Animator anim;
-    [SerializeField] Weapon weapon;
+    [SerializeField] Animator anim;             // 애니메이터.
+
+    [SerializeField] Transform muzzle;          // 총구.
+    [SerializeField] Bullet bulletPrefab;       // 총알 프리팹.
+    [SerializeField] Weapon weapon;             // 무기 데이터.
 
     public int MaxBullet => (weapon!= null) ? weapon.HavaBullet : 0;
     public int CurrentBullet => (weapon != null) ? weapon.CurretBullet : 0;
@@ -77,10 +80,14 @@ public class PlayerController : Singleton<PlayerController>
         // Time.time : 게임이 시작하고 몇 초가 흘렀는가?
         if (Input.GetMouseButton(0) && !weapon.IsEmptyCurrent && Time.time >= nextFireTime)
         {
-            nextFireTime = Time.time + weapon.RateTime;
-            weapon.Shoot();
-            anim.SetTrigger("onFire");
-            AudioManager.Instance.PlaySE("shoot", 0.1f);
+            nextFireTime = Time.time + weapon.RateTime;             // 다음 쏠 수 있는 시간.
+            AudioManager.Instance.PlaySE("shoot", 0.1f);            // 효과음 재생.
+            anim.SetTrigger("onFire");                              // 애니메이션 트리거.
+            weapon.Shoot();                                         // 무기 정보에서 총알 하나 제거.
+
+            // 실제 총알 오브젝트 생성.
+            Bullet bullet = Instantiate(bulletPrefab, muzzle.position, muzzle.rotation);
+            bullet.Shoot();
         }
     }
     private void Reload()
