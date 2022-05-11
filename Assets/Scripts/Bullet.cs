@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] float speed;
     [SerializeField] GameObject holePrefab;
 
     Rigidbody rigid;
@@ -24,12 +23,12 @@ public class Bullet : MonoBehaviour
         //Destroy(gameObject);        // 내 게임 오브젝트를 삭제하겠다.
     }
 
-    public void Shoot()
+    public void Shoot(float bulletSpeed)
     {
         // velocity(속력):Vector3
         // = Vector3.forward(월드상 정면) * 속도 = 벡터.
         rigid = GetComponent<Rigidbody>();
-        rigid.velocity = transform.forward * speed;
+        rigid.velocity = transform.forward * bulletSpeed;
     }
 
 

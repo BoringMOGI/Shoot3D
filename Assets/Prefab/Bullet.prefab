@@ -47,7 +47,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 989b07abb808cdb48822be284577caf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 40
   holePrefab: {fileID: 8519093706466438209, guid: 6cac7d2c7de22e346a92eccd48496a4d, type: 3}
 --- !u!54 &4828070299819250313
 Rigidbody:
@@ -64,7 +63,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 2
 --- !u!136 &3143283733604765098
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -76,7 +75,7 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.02
-  m_Height: 0.1
+  m_Height: 0.02
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!96 &7684864366756178818
@@ -120,10 +119,10 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 5
+  m_Time: 0.5
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.1
+    widthMultiplier: 0.05
     widthCurve:
       serializedVersion: 2
       m_Curve:
