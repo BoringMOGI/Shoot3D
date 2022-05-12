@@ -16,19 +16,12 @@ public class Bullet : MonoBehaviour
 
         Destroy(gameObject);        // 내 게임 오브젝트를 삭제하겠다.
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        //Instantiate(holePrefab, transform.position, transform.rotation);
-        //Destroy(gameObject);        // 내 게임 오브젝트를 삭제하겠다.
-    }
-
-    public void Shoot(float bulletSpeed)
+    public void Shoot(float bulletSpeed, Vector3 direction)
     {
         // velocity(속력):Vector3
         // = Vector3.forward(월드상 정면) * 속도 = 벡터.
         rigid = GetComponent<Rigidbody>();
-        rigid.velocity = transform.forward * bulletSpeed;
+        rigid.velocity = direction * bulletSpeed;
     }
 
 

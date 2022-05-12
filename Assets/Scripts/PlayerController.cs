@@ -15,20 +15,30 @@ public class PlayerController : Singleton<PlayerController>
         {
             Fire();
             Reload();
+            ChangeFireType();
         }
     }
 
     private void Fire()
     {
-        if(Input.GetMouseButton(0) && weapon.Fire())
-            anim.SetTrigger("onFire");
+        if (Input.GetMouseButton(0))
+        {
+            if(weapon.StartFire())
+                anim.SetTrigger("onFire");
+        }
+        else if (Input.GetMouseButtonUp(0))
+            weapon.EndFire();
     }
     private void Reload()
     {
         if (Input.GetKeyDown(KeyCode.R) && weapon.Reload())
             anim.SetTrigger("onReload");
     }
-
+    private void ChangeFireType()
+    {
+        if (Input.GetKeyDown(KeyCode.B))
+            weapon.OnChangeType();
+    }
 
    
 }
