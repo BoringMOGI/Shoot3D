@@ -8,6 +8,7 @@ public class WeaponInfoUI : Singleton<WeaponInfoUI>
     [SerializeField] Text maxBulletText;
     [SerializeField] Text currentBulletText;
     [SerializeField] Text fireTypeText;
+    [SerializeField] Text grenadeCountText;
 
     public void UpdateBulletText(int current, int max)
     {
@@ -17,5 +18,9 @@ public class WeaponInfoUI : Singleton<WeaponInfoUI>
     public void UpdateFireType(string str)
     {
         fireTypeText.text = str;
+    }
+    public void UpdateGrenadeCount(int count)
+    {
+        grenadeCountText.text = count.ToString();
     }
 }

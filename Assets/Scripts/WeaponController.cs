@@ -33,7 +33,9 @@ public class WeaponController : MonoBehaviour
 
     int currentBullet;      // 현재 탄약 수. 
     float nextFireTime;     // 다음 총을 쏠 수 있는 시간.
-    bool isReload;          // 장전 중인가?
+
+    [HideInInspector]
+    public bool isReload;   // 장전 중인가?
     bool isFire;            // 격발하고 있는가?
 
     FIRE_TYPE fireType;        // 발사 방식
