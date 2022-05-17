@@ -9,9 +9,11 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] GrenadeThrow grenadeThrow; // 수류탄.
 
     [Header("Eye")]
-    [SerializeField] Transform eye;             // 눈.
+    [SerializeField] Camera eye;                // 눈.
     [SerializeField] Transform normalCamera;    // 일반 시야 위치.
     [SerializeField] Transform aimCamera;       // 에임 시야 위치.
+
+    bool isAim;
 
     void Update()
     {
@@ -30,7 +32,7 @@ public class PlayerController : Singleton<PlayerController>
     {
         if (Input.GetMouseButton(0))
         {
-            if(weapon.StartFire())
+            if(weapon.StartFire(isAim))
                 anim.SetTrigger("onFire");
         }
         else if (Input.GetMouseButtonUp(0))
@@ -43,9 +45,10 @@ public class PlayerController : Singleton<PlayerController>
             anim.SetTrigger("onAim");
         }
 
-        bool isAim = Input.GetMouseButton(1);
+        isAim = Input.GetMouseButton(1) && !weapon.isReload;
         anim.SetBool("isAim", isAim);
-        eye.position = isAim ? aimCamera.position : normalCamera.position;
+        eye.transform.position = isAim ? aimCamera.position : normalCamera.position;
+        eye.fieldOfView = isAim ? 45 : 60;
         CrossHairUI.Instance.SwitchCrosshair(!isAim);
     }
 
