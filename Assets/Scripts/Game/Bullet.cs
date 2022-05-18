@@ -13,7 +13,6 @@ public class Bullet : MonoBehaviour
         GameObject hole = Instantiate(holePrefab);
         hole.transform.position = transform.position;
         hole.transform.rotation = Quaternion.LookRotation(collision.contacts[0].normal);
-
         Destroy(gameObject);        // 내 게임 오브젝트를 삭제하겠다.
     }
     public void Shoot(float bulletSpeed, Vector3 direction)

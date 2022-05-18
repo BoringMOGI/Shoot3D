@@ -13,10 +13,15 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] Transform normalCamera;    // 일반 시야 위치.
     [SerializeField] Transform aimCamera;       // 에임 시야 위치.
 
+    [Header("Time")]
+    [SerializeField] float timeScale;
+
     bool isAim;
 
     void Update()
     {
+        Time.timeScale = timeScale;
+
         if (weapon != null && !weapon.isReload)
         {
             Fire();

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class CrossHairUI : Singleton<CrossHairUI>
 {
-    [SerializeField] float hairOffset;
-
     Transform[] hairs;
     float screenUnit;
 
@@ -13,8 +11,10 @@ public class CrossHairUI : Singleton<CrossHairUI>
     {
         // 월드 좌표상 Unit(1M)가 Screen상에서 몇 Pixel인가?
         Camera cam = Camera.main;
-        Vector3 p1 = cam.WorldToScreenPoint(Vector3.zero);
-        Vector3 p2 = cam.WorldToScreenPoint(Vector3.right);
+        Vector3 onePosition = cam.transform.position + cam.transform.forward * 5f;
+
+        Vector3 p1 = cam.WorldToScreenPoint(onePosition);
+        Vector3 p2 = cam.WorldToScreenPoint(onePosition + cam.transform.right);
         screenUnit = Vector3.Distance(p1, p2);
 
         // 자식 오브젝트 검색.
@@ -32,7 +32,7 @@ public class CrossHairUI : Singleton<CrossHairUI>
     }
     public void UpdateCrosshair(float collectionRate)
     {
-        float offset = collectionRate * screenUnit * hairOffset;
+        float offset = collectionRate * screenUnit;
         SetHairPosition(0, 0, offset);
         SetHairPosition(1, 0, -offset);
         SetHairPosition(2, -offset, 0);

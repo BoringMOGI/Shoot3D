@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: DefaultRifle
   m_EditorClassIdentifier: 
   rateTime: 0.12
-  bulletSpeed: 20
+  bulletSpeed: 25
   power: 10
   maxBullet: 30
   maxHaveBullet: 150
   addCollection: 0.45
   delCollection: 0.2
   minCollection: 0.15
-  maxCollection: 0.4
+  maxCollection: 0.75
   recoil: {x: 0, y: 0}
   ignoreLayer:
     serializedVersion: 2
