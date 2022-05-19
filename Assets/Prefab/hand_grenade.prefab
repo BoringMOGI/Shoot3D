@@ -31,6 +31,7 @@ Transform:
   m_LocalRotation: {x: 0.0000018099952, y: -0.0000036517788, z: 7.0588735e-12, w: 1}
   m_LocalPosition: {x: -0.006, y: 1.236, z: -1.549}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -54,6 +55,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -101,6 +103,10 @@ MonoBehaviour:
   delay: 2
   explodeRadius: 4
   explodeForce: 500
+  damagePower: 90
+  damageMask:
+    serializedVersion: 2
+    m_Bits: 1664
 --- !u!54 &7463081649329961086
 Rigidbody:
   m_ObjectHideFlags: 0

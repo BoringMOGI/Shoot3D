@@ -5,16 +5,14 @@ using UnityEngine;
 public class Target : MonoBehaviour
 {
     [SerializeField] HpBar hpBar;
-    [SerializeField] float maxHP;
-    [SerializeField] float hp;
-
+    [SerializeField] Status stat;
 
     private void Start()
     {
         UpdateHp();
     }
-    private void UpdateHp()
+    public void UpdateHp()
     {
-        hpBar.OnUpdateHp(hp, maxHP);
+        hpBar.OnUpdateHp(stat.hp, stat.maxHP);
     }
 }
