@@ -50,6 +50,7 @@ public class InventoryUI : Singleton<InventoryUI>
     private void OnOpen()
     {
         AudioManager.Instance.PlaySE("paper");
+        Debug.Log(OnOpenEvent);
         OnOpenEvent?.Invoke();
     }
     private void OnClose()

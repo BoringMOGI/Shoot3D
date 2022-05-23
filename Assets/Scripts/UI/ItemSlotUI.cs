@@ -17,6 +17,9 @@ public class ItemSlotUI : MonoBehaviour
 
     public void Setup(Item item)
     {
+        Debug.Log(item);
+
+
         this.item = item;
         if (item == null)
         {
