@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cd887d38367556448aaabf265af41d85
+guid: 1b33734054ee8794ca6de9d57c7dc8da
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Suseong Dotum
+  - ChangwonDangamAsac
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

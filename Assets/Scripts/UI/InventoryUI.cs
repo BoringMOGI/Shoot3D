@@ -6,11 +6,12 @@ using UnityEngine.EventSystems;
 
 public class InventoryUI : Singleton<InventoryUI>
 {
-    [SerializeField] ItemSlotUI[] itemSlots;     // 모든 아이템 슬롯들.
+    [SerializeField] Transform slotParent;
     [SerializeField] UnityEvent OnOpenEvent;
     [SerializeField] UnityEvent OnCloseEvent;
 
     Transform[] allChilds;      // 모든 자식 오브젝트. (활성/비활성화에 사용 된다)
+    ItemSlotUI[] itemSlots;     // 모든 아이템 슬롯들.
 
     public bool isOpen;
 
@@ -20,6 +21,15 @@ public class InventoryUI : Singleton<InventoryUI>
         allChilds = new Transform[transform.childCount];
         for (int i = 0; i < allChilds.Length; i++)
             allChilds[i] = transform.GetChild(i);
+
+        // 모든 하위 자식의 ItemsSlotUI를 가져온다.
+        /*
+        itemSlots = new ItemSlotUI[slotParent.childCount];
+        for(int i= 0; i< itemSlots.Length; i++)
+            itemSlots[i] = transform.GetChild(i).GetComponent<ItemSlotUI>();
+        */
+
+        itemSlots = slotParent.GetComponentsInChildren<ItemSlotUI>();
 
         SwitchInventory(false);
     }
@@ -50,7 +60,6 @@ public class InventoryUI : Singleton<InventoryUI>
     private void OnOpen()
     {
         AudioManager.Instance.PlaySE("paper");
-        Debug.Log(OnOpenEvent);
         OnOpenEvent?.Invoke();
     }
     private void OnClose()
