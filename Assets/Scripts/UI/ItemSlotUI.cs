@@ -30,6 +30,7 @@ public class ItemSlotUI : MonoBehaviour
         if (item == null)
         {
             SwitchSlot(false);
+
         }
         else
         {
@@ -40,7 +41,6 @@ public class ItemSlotUI : MonoBehaviour
     }
 
     
-
     public void OnSelected()
     {
         // 아이템 슬롯이 선택 되었을 때.
@@ -54,5 +54,19 @@ public class ItemSlotUI : MonoBehaviour
         // 아이템 슬롯 선택이 풀렸을 때.
         selectedImage.enabled = false;
         DescriptionUI.Instance.Close();
+    }
+
+
+    public void OnBeginDrag()
+    {
+        InventoryUI.Instance.OnBeginDrag(item);
+    }
+    public void OnDrag()
+    {
+        InventoryUI.Instance.OnSlotDrag();
+    }
+    public void OnEndDrag()
+    {
+        InventoryUI.Instance.OnEndSlotDrag();
     }
 }

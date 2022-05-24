@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 public class InventoryUI : Singleton<InventoryUI>
 {
     [SerializeField] Transform slotParent;
+    [SerializeField] ItemSlotUI dragSlot;
     [SerializeField] UnityEvent OnOpenEvent;
     [SerializeField] UnityEvent OnCloseEvent;
 
@@ -73,5 +74,20 @@ public class InventoryUI : Singleton<InventoryUI>
         {
             itemSlots[i].Setup(items[i]);
         }
+    }
+
+    // 아이템 슬롯 드래그.
+    public void OnBeginDrag(Item item)
+    {
+        dragSlot.gameObject.SetActive(true);
+        dragSlot.Setup(item);
+    }
+    public void OnSlotDrag()
+    {
+        dragSlot.transform.position = Input.mousePosition;
+    }
+    public void OnEndSlotDrag()
+    {
+        dragSlot.gameObject.SetActive(false);
     }
 }

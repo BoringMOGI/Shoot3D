@@ -23,7 +23,7 @@ public class PlayerController : Singleton<PlayerController>
     {
         Time.timeScale = timeScale;
 
-        if (weapon != null && !weapon.isReload)
+        if (weapon != null && !weapon.isReload && !InventoryUI.Instance.isOpen)
         {
             Fire();
             Reload();
