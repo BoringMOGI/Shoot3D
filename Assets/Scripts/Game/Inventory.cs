@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour
+public class Inventory : Singleton<Inventory>
 {
     public Item[] items;
     const int MAX_INVENTORY = 20;
-
  
-    void Start()
+    protected new void Awake()
     {
-        items = new Item[MAX_INVENTORY];        
+        base.Awake();                       // 상위 클래스의 Awake 실행.
+        items = new Item[MAX_INVENTORY];      
     }
 
     public void AddItem(Item item)
@@ -20,9 +20,23 @@ public class Inventory : MonoBehaviour
             if (items[i] == null)
             {
                 items[i] = item;
+                PickupUI.Instance.PickupItem(item);
                 break;
             }
         }
+
+        UpdateUI();
+    }
+    public void MoveItem(int start, int end)
+    {
+        if (start == end)
+            return;
+
+        Item startItem = items[start];
+        Item endItem = items[end];
+
+        items[start] = endItem;
+        items[end] = startItem;
 
         UpdateUI();
     }

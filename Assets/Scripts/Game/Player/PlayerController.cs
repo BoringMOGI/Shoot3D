@@ -19,6 +19,12 @@ public class PlayerController : Singleton<PlayerController>
 
     bool isAim;
 
+    private void Start()
+    {
+        inven.AddItem(ItemManager.Instance.GetItem("Potion", 20));
+        inven.AddItem(ItemManager.Instance.GetItem("Ammo", 100));
+        inven.AddItem(ItemManager.Instance.GetItem("Armor", 1));
+    }
     void Update()
     {
         Time.timeScale = timeScale;
