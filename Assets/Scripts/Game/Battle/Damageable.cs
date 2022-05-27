@@ -16,8 +16,11 @@ public class Damageable : MonoBehaviour
 
         stat.hp = Mathf.Clamp(stat.hp - power, 0, stat.maxHP);          // 실제 hp감소.
         onDamageEvent?.Invoke(power);                                   // 피격 이벤트 발생.
-        if(stat.hp <= 0)                                                // 사망시.
+        if (stat.hp <= 0)                                               // 사망시.
+        {
             onDeadEvent?.Invoke();                                      // 죽음 이벤트 발생.
+            Destroy(gameObject);                                        // 오브젝트 삭제.
+        }
     }
     
 }

@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Charactor
+  - line_Only
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - Bullet
   - Enemy
   - Damageable
-  - 
-  - 
+  - Interact
+  - Interact_NoContact
   - 
   - 
   - 
